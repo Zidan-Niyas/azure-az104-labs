@@ -29,8 +29,20 @@
 3. Shared NSG for both the web and db servers (nsg-dev-eus2-shared)
     - NSGs are attached to the network interface or the subnet
     - Instead of separate NSGs attached to the network interfaces of each individual VM, we can setup a shared NSG for a Vnet that is attached to the required subnets
-    - So now, we will have a central NSG that can be updated on any of the rules that is needed for the VMs and then this NSG is attached to the web and db subnets    
+    - So now, we will have a central NSG that can be updated on any of the rules that is needed for the VMs and then this NSG is attached to the web and db subnets   
+
+4. NSG attached to subnet vs network interface
+    - If the shared-NSG is attached to the web subnet and the web-vm-nsg is attached to the web-vm network interface, the rules need to match in both layers for it to work.
+    - For example: If AllowHttpInternet rule is added to the shared NSG but not present in the web-nsg attached to the network interface, access through http://{web-vm-public-ip} wont work, this is because, first the rule attached in the subnet is checked, then the rule attached to the network interface is checked, as the nsg at the network interface has no rule allowing http traffic, the request wont go through.
     
+5. Application Security Group
+    - Why use it: It acts as a tag for a VM instead of its private IP. When adding rules in the NSG, instead of giving the private IP of the VM, we can use the associated application security group. This is helpful as private IPs can change(if not static) and we would have to update the NSG rule every time the IP changes.
+    - Setup: 
+        - 1 ASG for web-vm (asg-dev-eus2-web)
+        - 1 ASG for db-vm (asg-dev-eus2-db)
+        - Add each ASG to their respective VMs
+        - Update shared-NSG to use these ASGs instead of the private IPs of the VMs
+
 
 
 ## Commands
