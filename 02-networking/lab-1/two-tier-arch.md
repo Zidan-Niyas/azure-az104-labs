@@ -13,7 +13,6 @@
 ## New Concepts Learned
 
 1. A VM with no public ip will have no outbound access, so it will need a NAT Gateway in its subnet for outbound access
-    Explaination: 
     - Context: The 'db-vm' in the subnet 'snet-dev-eus2-db-01' was created without an attached public ip (db's are normally setup in a way not accessible via the public internet)
     - Problem: When i tried to do 'sudo apt update' from the serial console of the db vm, the packages were not getting installed, because outbound traffic was blocked/notpossible
     - The reason for this: if a vm has no public ip, the packets that leave the vm can't route through the internet only using the vm's private IP, there needs to be something in the middle that converts the private IP to a public IP so that we are able to talk to the internet, that's where the NAT (network address translator) gateway comes in.
@@ -26,6 +25,11 @@
     - web-vm & db-vm denies all outbound traffic to the internet from its machine [outbound -deny]
 
     So now, the web-vm is open to the internet while the db-vm is blocked from being accessed from the internet. The db-vm can be accessed only from the webserver.
+
+3. Shared NSG for both the web and db servers (nsg-dev-eus2-shared)
+    - NSGs are attached to the network interface or the subnet
+    - Instead of separate NSGs attached to the network interfaces of each individual VM, we can setup a shared NSG for a Vnet that is attached to the required subnets
+    - So now, we will have a central NSG that can be updated on any of the rules that is needed for the VMs and then this NSG is attached to the web and db subnets    
     
 
 
