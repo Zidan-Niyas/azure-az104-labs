@@ -1,15 +1,3 @@
-## Architecture
-- Subscription: Personal Lab
-- Resource Group: rg-dev-eus2
-- 1 virtual network (vnet-dev-eus2-01)
-- 2 subnets:
-    - web subnet (snet-dev-eus2-web-01)
-    - db subnet (snet-dev-eus2-db-01)
-- 2 Virtual Machines
-    - web-01 (in web subnet, with public IP)
-    - db-01 (in db subnet, no public IP)
-
-
 ## New Concepts Learned
 
 1. A VM with no public ip will have no outbound access, so it will need a NAT Gateway in its subnet for outbound access
@@ -42,26 +30,3 @@
         - 1 ASG for db-vm (asg-dev-eus2-db)
         - Add each ASG to their respective VMs
         - Update shared-NSG to use these ASGs instead of the private IPs of the VMs
-
-
-
-## Commands
-- In DB VM: 
-    - Install mysq-server: 
-        sudo apt install -y mysql-server
-    - Start mysql service: 
-        sudo systemctl enable --now mysql
-    - sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
-        - bind-address: 10.0.1.4 (db server private ip)  --> This makes the mysql server listen on the private IP of the db server 
-    - Restart mysql service: 
-        sudo systemctl restart mysql
-    - mysql db commands:
-        sudo mysql
-        CREATE USER 'dbadmin'@'%' IDENTIFIED BY 'Microsoft2025';
-        GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'%' WITH GRANT OPTION;
-        FLUSH PRIVILEGES;
-        EXIT;
-
-- In Web VM
-    - Install mysql-client
-        sudo apt install -y mysql-client
