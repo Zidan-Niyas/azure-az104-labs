@@ -35,3 +35,8 @@
     - If we add an ASG to a VM's network interface in a Vnet, we can only add the ASG to other VMs that are part of the same Vnet
     - If we have 2 VMs in the same region but different Vnets, the same ASG can't be attached to both of these VM's network interfaces at the sane time
     - The restriction is due to the NIC (Network INterface Card) of the VM. An Application Security Group attaches to the NIC (technically its IP configuration). So a VM with multiple NICs in different Vnets would also hit the same issue.
+
+7. Virtual Network Peering
+    - Used for connecting two virtual networks via the microsoft backbone network
+    - If we have two Vnets in the same region, by default the VMs inside each Vnet can't communicate with each other. 
+    - Once we add a peering link between the two Vnets, the communication between the two VMs in the two separate VNets becomes possible via the microsoft backbone network
