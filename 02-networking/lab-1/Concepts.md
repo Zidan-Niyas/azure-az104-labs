@@ -40,3 +40,11 @@
     - Used for connecting two virtual networks via the microsoft backbone network
     - If we have two Vnets in the same region, by default the VMs inside each Vnet can't communicate with each other. 
     - Once we add a peering link between the two Vnets, the communication between the two VMs in the two separate VNets becomes possible via the microsoft backbone network
+
+8. Azure Bastion
+    - It allows us to connect to machines using just its private IP, the azure bastion host itself will be assigned a public IP
+    - Normally if we wanted to access an internal server (eg: db-server), we would setup a jump-server that is accessible from the public network and then connect to the internal server via the jump server, but in this case we would have to manage the jump-server ourselves, patch it, update it etc.
+    - Azure Bastion is a fully managed PaaS, you dont expose ports 22(ssh) or 3389(RDP), and securely connect using TLS(port 443) via the azure portal.
+    - Azure bastion requires a dedicated subnet (AzureBastionSubnet - the name needs to be exactly this) with a minimum size of /26, and is deployed per Vnet, but can reach VMs in peered VNets.
+    - What creating a Bastion does:- It sets up a number of instances that will be used to connect to our VMs securely via the Azure portal
+    - Usecase: If we have a fleet of machines that we have to perform administration on, we don't need to attach public IPs to each machine, we can just setup an Azure Bastion in the VNet of those machines and connect using their private IPs (also VMs in peered VNets will be accessible)
