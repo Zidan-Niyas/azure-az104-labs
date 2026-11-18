@@ -48,3 +48,13 @@
     - Azure bastion requires a dedicated subnet (AzureBastionSubnet - the name needs to be exactly this) with a minimum size of /26, and is deployed per Vnet, but can reach VMs in peered VNets.
     - What creating a Bastion does:- It sets up a number of instances that will be used to connect to our VMs securely via the Azure portal
     - Usecase: If we have a fleet of machines that we have to perform administration on, we don't need to attach public IPs to each machine, we can just setup an Azure Bastion in the VNet of those machines and connect using their private IPs (also VMs in peered VNets will be accessible)
+
+9. Network Watcher
+    - Used for various network troubleshooting, monitoring and alerting
+    - Its features include:
+        - Connection Troubleshooting: running a diagnostic test of whether connection is possible between two VMs
+        - Connection Monitor: monitor specific connection test cases between a source and destination (eg: http connection between two VMs, frequency=every 30 seconds, sucess threshold=10% checks failed (ie; if 10% checks fail, it will report as failure))
+        - IP flow verify: verify if packets can flow inbound or outbound to a particular port in a VM from the port of a remote VM
+        - NSG Diagnostics: to test network security group rules actually work or not
+        - Next hop: find the intermediate route between a source and destination 
+        - Flow logs: stores all connection flow details to a specified vnet/snet/vm in a storage account
