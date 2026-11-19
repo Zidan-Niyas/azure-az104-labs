@@ -63,3 +63,5 @@
     - By default, all resources (eg: VMs) have open routes between each other, ie; all VMs inside a VNet is able to connect with each other, this is due to the "AllowVnetInbound" security rule.
     - UDR is used to route the traffic the way you want, for eg:- diverting traffic from a web-vm to a db-vm via intermediate firewall vm
     - UDR takes priority over system routes
+    - Setup: add route table and then add the route with destination ip as the vnet ip/cidr and next_hop as the intermediate vm from which you want to route the traffic inside the vnet.
+    - Eg:- For a 3 VM setup (source, target & central) in a single VNet but 3 different subnets, add a route table and inside this a route giving destination IP as the vnet ip range (172.16.0.0/16) and the next-hop as the ip of the central vm. Therefore, all traffic inside the Vnet like connection between the source and target goes through the central vm. (one thing to keep in mind - need to enable port forwarding in the central vm for this to work)
