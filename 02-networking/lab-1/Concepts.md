@@ -58,3 +58,8 @@
         - NSG Diagnostics: to test network security group rules actually work or not
         - Next hop: find the intermediate route between a source and destination 
         - Flow logs: stores all connection flow details to a specified vnet/snet/vm in a storage account
+
+10. User Defined Routes
+    - By default, all resources (eg: VMs) have open routes between each other, ie; all VMs inside a VNet is able to connect with each other, this is due to the "AllowVnetInbound" security rule.
+    - UDR is used to route the traffic the way you want, for eg:- diverting traffic from a web-vm to a db-vm via intermediate firewall vm
+    - UDR takes priority over system routes
