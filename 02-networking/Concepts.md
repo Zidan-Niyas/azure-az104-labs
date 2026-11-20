@@ -65,3 +65,10 @@
     - UDR takes priority over system routes
     - Setup: add route table and then add the route with destination ip as the vnet ip/cidr and next_hop as the intermediate vm from which you want to route the traffic inside the vnet.
     - Eg:- For a 3 VM setup (source, target & central) in a single VNet but 3 different subnets, add a route table and inside this a route giving destination IP as the vnet ip range (172.16.0.0/16) and the next-hop as the ip of the central vm. Therefore, all traffic inside the Vnet like connection between the source and target goes through the central vm. (one thing to keep in mind - need to enable port forwarding in the central vm for this to work)
+
+11. Inbound NAT Rule (Load Balancers)
+    - Consider you have a load balancer setup with 2 web VMs sitting in its backend pool (the VMs dont have a public IP)
+    - If an administrator wanted to ssh into this backend server, the two options we have is: Azure Bastion or Inbound NAT rule
+    - The inbound port rule allows us to connect via the frontend IP address of the load balancer in a particular port that we define (eg: 50000) to the ssh port (22) of the backend web VM.
+    - Basically port mapping of the load balancer's port 50000 to the backend server's port 22
+    - ie; Admin ---> ssh into loadbalancer-ip (port 50000) ---> routes to port 22 of the backend server ---> ssh into backend server successfull!!
