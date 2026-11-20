@@ -13,6 +13,7 @@
     - Health Probe checking HTTP connectivity from the LB to the web VMs
     - Load Balancer rule to forward traffic coming into port 80 from the internet to the backend port 80 
     - 2 inbound NAT rules
+    - Outbound rule
 
 
 # Working
@@ -24,3 +25,4 @@
 - A health probe checks connections to port 80 from the load balancer to the backend servers (web-VMs) ensuring they are up
 - Point to keep in mind: Although this setup should work as it is, it wont work unless we define an AllowHttp inbound rule to the shared NSG attached to the network interface of both the web VMs. The rule should allow inbound traffic from the internet to the VMs via HTTP (port 80) so that the load balancer's public IP is able to connect to port 80 of the web VMs
 - 2 inbound NAT rules are setup, one for each web-VM, this allows us to SSH into the web-VMs via the load balancer public IP and ports 50000 and 50001 
+- Outbound rule is setup in the load balancer allowing the web VMs to be able to access the internet (eg:- for sudo apt update command)
