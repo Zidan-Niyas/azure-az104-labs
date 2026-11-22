@@ -72,3 +72,9 @@
     - The inbound port rule allows us to connect via the frontend IP address of the load balancer in a particular port that we define (eg: 50000) to the ssh port (22) of the backend web VM.
     - Basically port mapping of the load balancer's port 50000 to the backend server's port 22
     - ie; Admin ---> ssh into loadbalancer-ip (port 50000) ---> routes to port 22 of the backend server ---> ssh into backend server successfull!!
+
+12. Azure Public DNS (DNS Zone)
+    - If you have a third-party domain name and want to assign this domain name to your VM, the two options for doing this are:
+        - Via the third-party provider UI itself (GoDaddy): adding an "A record" with the VM's public IP (domain name to IP address link)
+        - Using DNS Zone in the Azure Console: - add the 4 DNS Zone nameservers to the third-party nameserver section, then add the public IP of the VM to the RecordSets of the DNS Zone resource, this allows us to route to the Azure VM when entering the domain name to the browser (Eg:- cloudhublearning.com ---> nginx page in a public Azure VM)
+    - Usecase: - From a security/maintenance/service perspective when we need all the resource specifications and configurations in    Azure itself, we can use this public DNS Zone mehod instead of adding the DNS records in the third-part provider's website.
