@@ -78,3 +78,11 @@
         - Via the third-party provider UI itself (GoDaddy): adding an "A record" with the VM's public IP (domain name to IP address link)
         - Using DNS Zone in the Azure Console: - add the 4 DNS Zone nameservers to the third-party nameserver section, then add the public IP of the VM to the RecordSets of the DNS Zone resource, this allows us to route to the Azure VM when entering the domain name to the browser (Eg:- cloudhublearning.com ---> nginx page in a public Azure VM)
     - Usecase: - From a security/maintenance/service perspective when we need all the resource specifications and configurations in    Azure itself, we can use this public DNS Zone mehod instead of adding the DNS records in the third-part provider's website.
+
+13. Virtual Network Integration
+    - For connecting a web app onto resources inside a VNet (if the resource doesnt have a public IP, eg:- a database VM)
+    - The webapp needs to be in the same region as the VNet
+    - There needs to be a dedicated subnet present for the virtual network integration, with subnet delegation set to "Microsoft.Web/serverFarms"
+    - Only inbound traffic from the webapp to the resource is possible, outbound connections from the resource in the VNet to the webapp won't work.
+    - Setup: in the webapp --> network settings --> add virtual network integration --> select the created subnet with the required delegation
+    - Now, browsing the webapp appointed DNS will give you the application running in the webapp with the required data from the db-VM in the VNet. (ie; connection of the webapp to the db-VM is successfull)
