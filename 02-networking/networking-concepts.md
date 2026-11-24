@@ -1,4 +1,4 @@
-## New Concepts Learned
+# Networking Concepts
 
 1. A VM with no public ip will have no outbound access, so it will need a NAT Gateway in its subnet for outbound access
     - Context: The 'db-vm' in the subnet 'snet-dev-eus2-db-01' was created without an attached public ip (db's are normally setup in a way not accessible via the public internet)
