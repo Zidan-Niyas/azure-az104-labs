@@ -16,3 +16,8 @@
     - Key authorization (each storage account gets two keys, they are like master passwords)
     - Shared access signature (temporary tokens for short term access to the resource)
     - Microsoft Entra ID (RBAC) 
+
+4. Azure Storage Explorer
+    - A central dashboard that can be used by anyone for working with the resources in an azure storage account
+    - We can connect a storage account to the storage explorer using the access keys given in the storage account
+    - We can upload, edit and delete objects via the storage explorer once a storage account has been connected to it
