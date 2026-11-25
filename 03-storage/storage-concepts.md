@@ -9,4 +9,10 @@
     - By default we cant access an blob stored object url from our browser, to get access we can do the following
     storage account --> configurations --> Allow blob anonymous access (enable)
     storage account --> containers --> change access level --> Blob (anoynmous read access for blobs only)
-    - This method of enabling anonymous access is not recommended
+    - This method of enabling anonymous access is not recommended, it is not a secure approach as everyone will be able to access this resource
+
+3. Access Authorization
+    - Anonymous access (not secure, authorization technique implemented in point 2)
+    - Key authorization (each storage account gets two keys, they are like master passwords)
+    - Shared access signature (temporary tokens for short term access to the resource)
+    - Microsoft Entra ID (RBAC) 
