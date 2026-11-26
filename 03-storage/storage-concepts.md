@@ -21,3 +21,13 @@
     - A central dashboard that can be used by anyone for working with the resources in an azure storage account
     - We can connect a storage account to the storage explorer using the access keys given in the storage account
     - We can upload, edit and delete objects via the storage explorer once a storage account has been connected to it
+
+5. Shared Access Signature (SAS)
+    - Blob level: 
+        - we can generate a SAS Token and URL for a specific blob with specified access duration (start and end time)
+        - we can specify the permissions of the access signature (READ, CREATE, WRITE etc.)
+        - the URL will be embed with the start and end time as well as the unique access signature string for that specific blob, allowing us to access the blob resource during that timeframe
+    - Container level:
+        - a container SAS token with read and list permission allows us to add the container to the azure storage explorer 
+    - Storage account level:
+        - a storage account SAS url will allow us to give the required permissions to the services, containers and objects in the storage account level and access these
