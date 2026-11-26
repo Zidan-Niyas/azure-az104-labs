@@ -31,3 +31,11 @@
         - a container SAS token with read and list permission allows us to add the container to the azure storage explorer 
     - Storage account level:
         - a storage account SAS url will allow us to give the required permissions to the services, containers and objects in the storage account level and access these
+
+6. Stored Access Policy
+    - Basically a centralized permissions and start-stop time defined policy that can be attached onto a shared access signatures when we are creating one for a container.
+    - Instead of defining the permissions when creating the SAS, we can just attach these pre-defined stored access policies.
+    - eg:- ReadListPolicy (read and list permissions added) 
+            Then, when creating a Shared Access Signature for a storage account container, use the ReadListPolicy, which gives the SAS URL the read and list permissions.
+    - This access policy can be created only at the container level, not at the blob or storage account level.
+    - It provides a centralized place for managing the permissions that are assigned to shared access signatures.
