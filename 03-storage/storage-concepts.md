@@ -43,3 +43,9 @@
 7. Immutable Blob Storage Policy
     - Allows us to define policies that makes edit/delete not possible for a set amount of days.
     - When this policy gets attached to a shared access token, the person accessing the resource wont be able to make any changes to the resource based on the immutable time defined in the policy
+
+8. Data Redundancy
+    - Locally Redundant Storage (LRS): data object is replicated 3 times across the same data centre
+    - Zone Redundant Storage (ZRS): data object is replicated across the 3 availability zones of the region
+    - Geo Redundant Storage (GRS): data is replicated across a paired region, so that a region going down won't affect you data from being unavailable. This costs double the normal LRS (LRS is done twice in two regions)
+    - Geo Zone Redundant Storage (GZRS): data is replicated across the 3 avalability zones in the primary region and also replicated to a secondary region
