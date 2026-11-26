@@ -5,13 +5,13 @@
     - This allows all types of files to be stored (images, python file, txt file etc..)
     - Each object that is uploaded to the blob storage has its own URL
 
-2. Blob storage object access
+2. Anonymous Blob storage object access
     - By default we cant access an blob stored object url from our browser, to get access we can do the following
     storage account --> configurations --> Allow blob anonymous access (enable)
     storage account --> containers --> change access level --> Blob (anoynmous read access for blobs only)
     - This method of enabling anonymous access is not recommended, it is not a secure approach as everyone will be able to access this resource
 
-3. Access Authorization
+3. Access Authorization Techniques
     - Anonymous access (not secure, authorization technique implemented in point 2)
     - Key authorization (each storage account gets two keys, they are like master passwords)
     - Shared access signature (temporary tokens for short term access to the resource)
@@ -39,3 +39,7 @@
             Then, when creating a Shared Access Signature for a storage account container, use the ReadListPolicy, which gives the SAS URL the read and list permissions.
     - This access policy can be created only at the container level, not at the blob or storage account level.
     - It provides a centralized place for managing the permissions that are assigned to shared access signatures.
+
+7. Immutable Blob Storage Policy
+    - Allows us to define policies that makes edit/delete not possible for a set amount of days.
+    - When this policy gets attached to a shared access token, the person accessing the resource wont be able to make any changes to the resource based on the immutable time defined in the policy
