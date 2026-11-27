@@ -73,3 +73,7 @@
         - Need to enable change feed in the source container
         - Need to enable versioning in both source and destination containers
     - Then, from source storage account, Data Management --> Object Replication --> Add replication rule
+
+13. Soft Delete in File Shares
+    - We can enable soft delete for a set amount of days (eg: 7 days) so that if someone accidently deletes the whole fileshare, it os recoverable for 7 days
+    - This is an important feature for data protection
