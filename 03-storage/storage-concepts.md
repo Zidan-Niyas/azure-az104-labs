@@ -77,3 +77,8 @@
 13. Soft Delete in File Shares
     - We can enable soft delete for a set amount of days (eg: 7 days) so that if someone accidently deletes the whole fileshare, it os recoverable for 7 days
     - This is an important feature for data protection
+
+14. AzCopy tool
+    - Used to work with azure storage accounts from the command line.
+    - You can create containers, copy local files to containers etc. using the azopy cli tool
+    - The tool needs to be installed on your machine before using it
