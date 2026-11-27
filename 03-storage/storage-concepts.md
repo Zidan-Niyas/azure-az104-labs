@@ -66,3 +66,10 @@
 11. Blob Versioning
     - Azure Console --> Storage Account --> Data Management --> Data protection --> Enable versioning
     - For every change you make to a blob, a version gets stored, this allows us to go back to previous versions of resources when needed
+
+12. Blob Storage Object Replication
+    - For replicating objects in a container in one storage account to another storage account
+    - Prerequisites: 
+        - Need to enable change feed in the source container
+        - Need to enable versioning in both source and destination containers
+    - Then, from source storage account, Data Management --> Object Replication --> Add replication rule
