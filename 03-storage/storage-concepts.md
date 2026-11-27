@@ -82,3 +82,9 @@
     - Used to work with azure storage accounts from the command line.
     - You can create containers, copy local files to containers etc. using the azopy cli tool
     - The tool needs to be installed on your machine before using it
+
+15. Premium Storage Accounts
+    - Storage accounts with low latency
+    - No access tiers like hot, cool, cold or archive
+    - Lifecycle management exists, but not for switching between acess tiers, only for deleting resources
+    - Premium storage accounts only have locally redundant and zone redundant storage options (LRS and ZRS), no geo redundant storage (GRS not possible)
