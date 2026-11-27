@@ -57,3 +57,12 @@
     - In the azure console: Storage Account --> Data Management --> Lifecycle Management --> Add a rule
     - If there are multiple rules for the same blob, it will perform the action that costs the least, 
         ie; delete < tierToCold < tierToCool, where delete costs the least, then tierToCold, then tierToCool, so delete action will be performed if all three rules exist for the same blob with same condition.
+
+10. Blob Snapshots
+    - Read-only copies of your blob storage 
+    - A point-in-time copy that we can promote to be the live version if the resource like a code file changes
+    - We can't delete a blob storage object if it has a snapshot, the snapshot will have to be deleted first.
+
+11. Blob Versioning
+    - Azure Console --> Storage Account --> Data Management --> Data protection --> Enable versioning
+    - For every change you make to a blob, a version gets stored, this allows us to go back to previous versions of resources when needed
