@@ -49,3 +49,11 @@
     - Zone Redundant Storage (ZRS): data object is replicated across the 3 availability zones of the region
     - Geo Redundant Storage (GRS): data is replicated across a paired region, so that a region going down won't affect you data from being unavailable. This costs double the normal LRS (LRS is done twice in two regions)
     - Geo Zone Redundant Storage (GZRS): data is replicated across the 3 avalability zones in the primary region and also replicated to a secondary region
+
+9. Blob Storage Lifecycle Management
+    - We can define policies to transition blob storage objects between the different access tiers (Hot, Cool, Cold & Archive), based on the policy we setup
+    - Eg:- we could setup a policy that says to transition the blob storage to cool access tier if it was last modified 30 days ago
+    - This makes it easier to manage the lifecycle of storage blobs, instead of having to manually handle the access tiers and having to know which blobs are not being accessed and which can be moved from hot to cool or from cool to cold, we can just setup these policies that will handle them for us.
+    - In the azure console: Storage Account --> Data Management --> Lifecycle Management --> Add a rule
+    - If there are multiple rules for the same blob, it will perform the action that costs the least, 
+        ie; delete < tierToCold < tierToCool, where delete costs the least, then tierToCold, then tierToCool, so delete action will be performed if all three rules exist for the same blob with same condition.
